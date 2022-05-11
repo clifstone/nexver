@@ -1,0 +1,9 @@
+.sitelogo {
+    width: 184px;
+    height: 50px;
+    position: relative;
+    z-index: 1;
+    .sidebar & {
+        height: auto;
+    }
+}

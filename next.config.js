@@ -1,6 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+module.exports = {
+    reactStrictMode: true,
+    images: {
+        loader: 'akamai',
+        path: '',
+        domains: ['localhost']
+    },
+    webpack: (config) => {
+        config.experiments = config.experiments || {};
+        config.experiments.topLevelAwait = true;
+        return config;
+    },
 }
-
-module.exports = nextConfig

@@ -1,0 +1,23 @@
+.thumb {
+    overflow: hidden;
+    position: relative;
+    &:before {
+        content: '';
+        width: 100%;
+        display: block;
+        padding-bottom: 56.25%;
+    }
+    >.wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        img {
+            width: 100% !important;
+            height: 100% !important;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+}

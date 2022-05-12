@@ -40,20 +40,20 @@ export default function ContactForm() {
     <div>
       < form >
 
-        < formGroup >
+        
           < label htmlFor='name'>Name</label>
           < input type='text' onChange={(e)=>{setName(e.target.value)}} name='name' />
-        </formGroup>
+        
 
-        < formGroup >
+        
           < label htmlFor='email'>Email</label>
           < input type='email' onChange={(e)=>{setEmail(e.target.value)}} name='email' />
-        </formGroup>
+        
 
-        < formGroup >
+        
           < label htmlFor='message'>Message</label>
           < input type='text' onChange={(e)=>{setMessage(e.target.value)}} name='message' />
-        </formGroup>
+        
 
         < input type='submit' onClick={(e)=>{handleSubmit(e)}}/>
       </form >

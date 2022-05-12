@@ -3,13 +3,13 @@ export default function (req, res) {
 
     let nodemailer = require('nodemailer')
     const transporter = nodemailer.createTransport({
-      port: 587,     
-      host: "smtp.office365.com",
-    secure: false,
-         auth: {
-              user: process.env.USER,
-              pass: process.env.PASSWORD,
-           },
+        port: 587,     
+        host: "smtp.office365.com",
+        secure: true,
+        auth: {
+            user: process.env.USER,
+            pass: process.env.PASSWORD,
+        },
     });
     
     const mailData = {

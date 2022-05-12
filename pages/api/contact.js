@@ -31,9 +31,9 @@ export default async (req, res) => {
     const mailData = {
         from: process.env.USER,
         to: process.env.USER,
-        subject: `Message From ${req.body.name}`,
-        text: req.body.message + " | Sent from: " + req.body.email,
-        html: `<div>${req.body.message}</div><p>Sent from: ${req.body.email}</p>`
+        subject: `Message From ${req.body.yourName}`,
+        text: req.body.yourMessage + " | Sent from: " + req.body.email,
+        html: `<p>Message Sender: ${req.body.yourName}</p><p>Sender Email: ${req.body.email}</p><div>${req.body.yourMessage}</div>`
     }
 
     await new Promise((resolve, reject) => {
@@ -50,14 +50,4 @@ export default async (req, res) => {
     });
     
     res.status(200).json({ status: "OK" });
-  
-    // transporter.sendMail(mailData, function (err, info) {
-    //     if(err)
-    //       console.log(err)
-    //     else
-    //       console.log(info);
-    // })
-  
-    // console.log(req.body)
-    // res.send(200)
 }

@@ -3,11 +3,16 @@ export default function (req, res) {
 
     let nodemailer = require('nodemailer')
     const transporter = nodemailer.createTransport({
-        service: "Hotmail",
+        port: 587,     
+        host: "smtp.office365.com",
+        secure: false,
         auth: {
             user: process.env.USER,
             pass: process.env.PASSWORD,
         },
+        tls: {
+            ciphers:'SSLv3'
+        }
     });
     
     const mailData = {

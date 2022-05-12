@@ -1,55 +1,63 @@
-const nodemailer = require("nodemailer");
-
+const nodemailer = require('nodemailer')
 export default async (req, res) => {
+    require('dotenv').config()
 
-const { name, email, message } = JSON.parse(req.body);
+    const transporter = nodemailer.createTransport({
+        port: 587,     
+        host: "smtp.office365.com",
+        secure: false,
+        auth: {
+            user: process.env.USER,
+            pass: process.env.PASSWORD,
+        },
+        tls: {
+            ciphers:'SSLv3'
+        }
+    });
 
-const transporter = nodemailer.createTransport({
-            port: 587,     
-            host: "smtp.office365.com",
-            secure: false,
-            auth: {
-                user: process.env.USER,
-                pass: process.env.PASSWORD,
-            },
-            tls: {
-                ciphers:'SSLv3'
+    await new Promise((resolve, reject) => {
+        // verify connection configuration
+        transporter.verify(function (error, success) {
+            if (error) {
+                console.log(error);
+                reject(error);
+            } else {
+                console.log("Server is ready to take our messages");
+                resolve(success);
             }
         });
-
-await new Promise((resolve, reject) => {
-    // verify connection configuration
-    transporter.verify(function (error, success) {
-        if (error) {
-            console.log(error);
-            reject(error);
-        } else {
-            console.log("Server is ready to take our messages");
-            resolve(success);
-        }
     });
-});
+    
+    const mailData = {
+        from: process.env.USER,
+        to: process.env.USER,
+        subject: `Message From ${req.body.name}`,
+        text: req.body.message + " | Sent from: " + req.body.email,
+        html: `<div>${req.body.message}</div><p>Sent from: ${req.body.email}</p>`
+    }
 
-const mailData = {
-            from: process.env.USER,
-            to: process.env.USER,
-            subject: `Message From ${req.body.name}`,
-            text: req.body.message + " | Sent from: " + req.body.email,
-            html: `<div>${req.body.message}</div><p>Sent from: ${req.body.email}</p>`
-        }
-
-await new Promise((resolve, reject) => {
-    // send mail
-    transporter.sendMail(mailData, (err, info) => {
-        if (err) {
-            console.error(err);
-            reject(err);
-        } else {
-            console.log(info);
-            resolve(info);
-        }
+    await new Promise((resolve, reject) => {
+        // send mail
+        transporter.sendMail(mailData, (err, info) => {
+            if (err) {
+                console.error(err);
+                reject(err);
+            } else {
+                console.log(info);
+                resolve(info);
+            }
+        });
     });
-});
-
-res.status(200).json({ status: "OK" });
-};
+    
+    res.status(200).json({ status: "OK" });
+  
+    // transporter.sendMail(mailData, function (err, info) {
+    //     if(err)
+    //       console.log(err)
+    //     else
+    //       console.log(info);
+    // })
+  
+    // console.log(req.body)
+    // res.send(200)
+}

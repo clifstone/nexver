@@ -31,5 +31,5 @@ export default function (req, res) {
     })
   
     console.log(req.body)
-    res.send('success')
+    res.send(200)
 }

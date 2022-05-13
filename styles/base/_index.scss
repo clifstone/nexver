@@ -5,7 +5,9 @@
 @forward 'sitefooter';
 @forward 'sidebar';
 @forward 'sitelogo';
+@forward 'forms';
 @forward 'colors';
+//
 .fullsection {
     width: 100%;
     min-height: calc(100vh - 50px);

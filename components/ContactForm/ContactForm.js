@@ -2,10 +2,16 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-export default Home;
 
-function Home() {
+  const togglethanks = () =>{
+    document.querySelector('.thankyou').classList.add('active');
+    setTimeout(() => {
+      document.querySelector('.thankyou').classList.remove('active');
+    },2000);
+  }
 
+
+export default function ContactForm() {
     const validationSchema = Yup.object().shape({
         yourName: Yup.string()
           .required('First Name is required'),
@@ -31,41 +37,45 @@ function Home() {
           },
           body: JSON.stringify(data, null, 4)
         })
-        reset()
+        reset();
+        togglethanks();
         return false;
     }
 
     return (
-        <div className="card m-3 contactform">
-            <div className="card-body">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-row">
-                        <div className="form-group col-5">
-                            <label>Your Name</label>
-                            <input name="your name" type="text" {...register('yourName')} className={`form-control ${errors.yourName ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.firstName?.message}</div>
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col">
-                            <label>Your Email</label>
-                            <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.email?.message}</div>
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-5">
-                            <label>Your Message</label>
-                            <textarea name="your message" {...register('yourMessage')} className={`form-control ${errors.yourMessage ? 'is-invalid' : ''}`}></textarea>
-                            <div className="invalid-feedback">{errors.yourMessage?.message}</div>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary mr-1">Submit</button>
-                        <button type="button" onClick={() => reset()} className="btn btn-secondary">Reset</button>
-                    </div>
-                </form>
+        <section className="contactsection">
+          <div className="sectionheading">
+            <h2>Contact Clif</h2>
+          </div>
+          <div className="wrapper">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="formrow">
+                <label>Your Name</label>
+                <input name="your name" type="text" {...register('yourName')} className={`form-control ${errors.yourName ? 'is-invalid' : ''}`} />
+                <div className="invalid-feedback">{errors.yourName?.message}</div>
+              </div>
+              <div className="formrow">
+                <label>Your Email</label>
+                <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
+                <div className="invalid-feedback">{errors.email?.message}</div>
+              </div>
+              <div className="formrow">
+                <label>Your Message</label>
+                <textarea name="your message" {...register('yourMessage')} className={`form-control ${errors.yourMessage ? 'is-invalid' : ''}`}></textarea>
+                <div className="invalid-feedback">{errors.yourMessage?.message}</div>
+              </div>
+              <div className="formrow">
+                  <button type="submit" className="btn submitbtn">Submit</button>
+                  <button type="button" onClick={() => reset()} className="btn resetbtn">Reset</button>
+              </div>
+            </form>
+          </div>
+          <div className="thankyou">
+            <div className="wrapper">
+              <div className="headline"><span>Thank You</span></div>
+              <div className="subheadline"><span>I'll get back to ya shortly</span></div>
             </div>
-        </div>
+          </div>
+        </section>
     );
 }

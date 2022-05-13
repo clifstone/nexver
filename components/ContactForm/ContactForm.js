@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
 
-  const togglethanks = () =>{
+  const togglethanks = () => {
     document.querySelector('.thankyou').classList.add('active');
     setTimeout(() => {
       document.querySelector('.thankyou').classList.remove('active');
@@ -73,7 +73,7 @@ export default function ContactForm() {
           <div className="thankyou">
             <div className="wrapper">
               <div className="headline"><span>Thank You</span></div>
-              <div className="subheadline"><span>I'll get back to ya shortly</span></div>
+              <div className="subheadline"><span>I&lsquo;ll get back to ya shortly</span></div>
             </div>
           </div>
         </section>

@@ -24,7 +24,7 @@ export default function AboutSection(){
       <div className="wrapper">
         <div className="sectionheading">
           <h2>ABOUT CLIF R.</h2>
-          <p>Here, you'll find out more about me, what I do, and my current skills</p>
+          <p>Here, you&rsquo;ll find out more about me, what I do, and my current skills</p>
         </div>
         {
           aboutsections.map(thecontent => {

@@ -26,14 +26,20 @@ export default function PortfolioPageContent(){
   const portfoliopagesectioncontent = data.portfolioSections.nodes;
 
   return (
-    <div className="portfolio">
-    {
-      portfoliopagesectioncontent.map(thecontent => {
-        return(
-          <section key={thecontent.id} className='portfoliosection' dangerouslySetInnerHTML={{__html: thecontent.content}}></section>
-        )
-      })
-    }
-    </div>
+    <section className="portfoliosection fullsection">
+      <div className="wrapper">
+        <div className="sectionheading">
+          <h2>Projects</h2>
+          <p>Here are some personal and client projects that I created</p>
+        </div>
+        {
+          portfoliopagesectioncontent.map(thecontent => {
+            return(
+              <div className='portfolioitem' key={thecontent.id} dangerouslySetInnerHTML={{__html: thecontent.content}}></div>
+            )
+          })
+        }
+      </div>
+    </section>
   );
 }

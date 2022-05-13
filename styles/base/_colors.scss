@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    color: white;
 }
 
 .siteheader {
@@ -24,7 +25,7 @@ body {
     }
 }
 
-.homepagesection {
+.aboutsection {
     background-color: #090909;
     color: white;
 }
@@ -32,9 +33,6 @@ body {
 .portfoliosection {
     background-color: #121212;
     color: white;
-    &.miscsection {
-        background-color: #090909;
-    }
 }
 
 .color-white {

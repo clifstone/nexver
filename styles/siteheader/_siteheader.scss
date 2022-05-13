@@ -122,6 +122,9 @@ $menbtncolor: #cccccc;
         ul {
             display: flex;
             gap: 1rem;
+            li {
+                border: 0 none;
+            }
         }
     }
 }

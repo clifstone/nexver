@@ -19,14 +19,14 @@ export default function HomePageContent(){
   const homepagesectioncontent = data.homePageSections.nodes;
 
   return (
-    <div className="homepage">
+    <section className="aboutsection">
     {
       homepagesectioncontent.map(thecontent => {
         return(
-          <section key={thecontent.homePageSectionId} className='homepagesection' dangerouslySetInnerHTML={{__html: thecontent.content}}></section>
+          <div className='aboutitem' key={thecontent.homePageSectionId} dangerouslySetInnerHTML={{__html: thecontent.content}}></div>
         )
       })
     }
-    </div>
+    </section>
   );
 }

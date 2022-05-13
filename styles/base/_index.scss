@@ -1,18 +1,18 @@
 @forward 'reset';
 @forward 'text';
 @forward 'thumb';
-@forward 'siteheader';
-@forward 'sitefooter';
 @forward 'sidebar';
 @forward 'sitelogo';
 @forward 'forms';
 @forward 'colors';
 //
 .fullsection {
-    width: 100%;
-    min-height: calc(100vh - 50px);
-    max-height: calc(100vh - 50px);
-    overflow: hidden;
+    >.wrapper {
+        padding: 8rem 1rem;
+        max-width: 1180px;
+        min-height: calc(100vh - 50px);
+        margin: auto;
+    }
 }
 
 .fw {
@@ -39,10 +39,10 @@
 }
 
 .sectionheading {
+    text-align: center;
     margin: 0 0 4rem 0;
     h2 {
         font-size: clamp(2rem, 1.4262rem + 3.2787vw, 3rem);
-        text-align: center;
         text-transform: uppercase;
         line-height: 1.25;
         &:after {

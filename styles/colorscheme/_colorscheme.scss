@@ -1,0 +1,69 @@
+@use '../abstracts/' as *;
+//
+body {
+    background-color: $black;
+    color: $white;
+}
+
+.siteheader {
+    background-color: rgba($black, 0.8);
+}
+
+.pagesmenu {
+    ul {
+        color: $white;
+        background-color: rgba($black, 0.8);
+        li {
+            border-color: rgba($white, 0.1);
+        }
+    }
+    @media #{$tab} {
+        ul {
+            background-color: transparent;
+            li {
+                border-color: transparent;
+            }
+        }
+    }
+}
+
+.aboutsection {
+    background-color: $mdblack;
+    color: $white;
+}
+
+.portfoliosection {
+    background-color: $ltblack;
+    color: $white;
+}
+
+.color-white {
+    color: $white;
+}
+
+.skill-list {
+    >* {
+        background-color: $dkgray;
+    }
+}
+
+.sectionheading {
+    h2 {
+        &:after {
+            background: $accent;
+        }
+    }
+}
+
+.sitefooter {
+    background: $black;
+    color: $mdgray;
+}
+
+.contactsection {
+    background-color: $white;
+}
+
+.thankyou {
+    background-color: rgba($black, 0.25);
+}

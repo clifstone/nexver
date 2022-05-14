@@ -61,3 +61,24 @@
         display: none;
     }
 }
+
+.blackstar {
+    transform-origin: center center;
+    animation: rotating 16s linear infinite;
+}
+
+@keyframes wheeldot {
+    to {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

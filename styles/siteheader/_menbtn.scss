@@ -1,0 +1,59 @@
+@use '../abstracts/' as *;
+//
+.menbtn {
+    width: $siteheaderheight;
+    height: $siteheaderheight;
+    position: relative;
+    z-index: 1;
+    padding: 0.25rem;
+    cursor: pointer;
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
+.menimg {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    .menbtn:active & {
+        background-color: rgba(white, 0.5);
+        border: 1px solid rgba(white, 1);
+        box-shadow: 0 0 8px white;
+    }
+    .top {
+        stroke-dasharray: 40 172;
+    }
+    .middle {
+        stroke-dasharray: 40 111;
+    }
+    .bottom {
+        stroke-dasharray: 40 172;
+    }
+    .showmen & {
+        .top {
+            stroke-dashoffset: -132px;
+        }
+        .middle {
+            stroke-dashoffset: -71px;
+        }
+        .bottom {
+            stroke-dashoffset: -132px;
+        }
+    }
+    .line {
+        fill: none;
+        transition: stroke-dasharray 1s, stroke-dashoffset 1s;
+        stroke: $menbtncolor;
+        stroke-width: 5.5;
+        stroke-linecap: round;
+        .menbtn:active & {
+            stroke: white;
+        }
+    }
+    @media #{$des} {
+        .menbtn:hover & {
+            border: 1px solid rgba(white, 0.35);
+            background-color: rgba(white, 0.15);
+        }
+    }
+}

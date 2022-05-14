@@ -11,8 +11,6 @@
     }
 }
 
-html {}
-
 html,
 body {
     font-family: sans-serif;
@@ -56,17 +54,4 @@ input {
     &[type="checkbox"] {
         width: auto;
     }
-}
-
-.grid {
-    display: grid;
-}
-
-.flex {
-    display: flex;
-}
-
-.offscreen {
-    position: absolute;
-    left: -100vw;
 }

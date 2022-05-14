@@ -1,39 +1,47 @@
+@use '../abstracts/' as *;
+//
 .portfolioitem {
-    padding: 1rem 1rem 5rem;
+    padding: 1rem 0 5rem;
     &:last-child {
-        padding: 0 1rem 0;
+        padding: 1rem 0 0;
     }
     .wp-block-columns {
         display: grid;
         grid-gap: 1rem;
     }
-    .wp-block-buttons {
-        margin: 0 0 1rem 0;
-    }
     .wp-block-button {
-        margin: 1.5rem 0.5rem 0 0;
         display: inline-block;
+        margin: 0 0 1.5rem 0;
         >a {
-            background-color: black;
-            border: 2px solid white;
-            box-shadow: 0 0 4px black;
+            font-family: 'fontbold';
+            font-size: clamp(0.8rem, 0.7431rem + 0.5351vw, 1rem);
+            letter-spacing: 0.15rem;
+            display: inline-block;
+            text-transform: uppercase;
+            display: inline-block;
+            line-height: 0;
+            border-radius: 0.5rem;
+            padding: 1.2rem 2rem;
+            cursor: pointer;
+            transition: transform 0.25s ease-out;
+            &:hover {
+                transform: translateY(-4px);
+            }
         }
     }
-    .buttonlook {
-        margin: 1rem 0.5rem 0 0;
-    }
-    @media (min-width:1024px) {
-        padding: 1rem 4rem 8rem;
+    @media #{$des} {
+        padding: 1rem 0 8rem;
         .wp-block-columns {
-            max-width: 1180px;
-            margin: auto;
             grid-template-columns: 1.5fr 1fr;
             grid-gap: 2rem;
             align-items: center;
         }
     }
-    @media (min-width:1366px) {
-        padding: 1rem 1rem 10rem;
+    @media #{$des2} {
+        padding: 1rem 0 10rem;
+        &:last-child {
+            padding: 1rem 0 0;
+        }
         .wp-block-columns {
             grid-gap: 5rem;
         }

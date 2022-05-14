@@ -2,8 +2,9 @@
 //
 .contactsection {
     position: relative;
-    form {
-        max-width: 1180px;
+    >.wrapper {
+        padding: 8rem 1rem;
+        max-width: $maxwidth;
         margin: auto;
     }
     .formrow {
@@ -18,31 +19,24 @@
 }
 
 .invalid-feedback {
-    font-size: 0.75rem;
+    font-size: $smfontsize;
     text-align: right;
 }
 
 .thankyou {
+    @include mcStretch(absolute);
     line-height: 1;
     text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     display: none;
     &.active {
         display: block;
     }
     >.wrapper {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @include mcCenter;
     }
     .headline {
-        font-size: 4rem;
-        font-weight: 700;
+        font-size: $hugefontsize;
+        font-weight: $blackfontweight;
         text-transform: uppercase;
     }
 }

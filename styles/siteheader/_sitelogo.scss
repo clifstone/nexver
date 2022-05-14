@@ -1,9 +1,8 @@
+@use '../abstracts/' as *;
+//
 .sitelogo {
-    width: 184px;
-    height: 50px;
-    position: relative;
-    z-index: 1;
-    .sidebar & {
-        height: auto;
+    img {
+        width: auto !important;
+        height: calc(#{$siteheaderheight} + 12px) !important;
     }
 }

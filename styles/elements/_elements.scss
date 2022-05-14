@@ -1,20 +1,28 @@
 @use '../abstracts/' as *;
 //
-.fullsection {
-    >.wrapper {
-        padding: 8rem 1rem;
-        max-width: 1180px;
-        min-height: calc(100vh - 50px);
-        margin: auto;
-    }
-}
-
 .posrel {
     position: relative;
 }
 
 .absocenter {
-    @include absoCenter;
+    @include mcCenter;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.offscreen {
+    position: absolute;
+    left: -100vw;
+}
+
+.sitewrapper {
+    min-height: 100vh;
 }
 
 .skill-list {
@@ -28,27 +36,13 @@
     }
 }
 
-.wp-block-button {
-    >a {
-        font-family: 'fontbold';
-        font-size: clamp(0.8rem, 0.7431rem + 0.5351vw, 1rem);
-        letter-spacing: 0.15rem;
-        display: inline-block;
-        text-transform: uppercase;
-        display: inline-block;
-        line-height: 0;
-        border-radius: 0.5rem;
-        padding: 1.2rem 2rem;
-        cursor: pointer;
-        transition: transform 0.25s ease-out;
-        &:hover {
-            transform: translateY(-4px);
-        }
+.fullsection {
+    >.wrapper {
+        padding: 8rem 1rem;
+        max-width: $maxwidth;
+        min-height: calc(100vh - 50px);
+        margin: auto;
     }
-}
-
-.sitewrapper {
-    min-height: 100vh;
 }
 
 .sectionheading {

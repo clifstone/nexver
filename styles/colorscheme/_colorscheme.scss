@@ -37,6 +37,16 @@ body {
     color: $white;
 }
 
+.portfolioitem {
+    .wp-block-button {
+        >a {
+            background-color: $black;
+            border: 2px solid $white;
+            box-shadow: 0 0 4px $black;
+        }
+    }
+}
+
 .color-white {
     color: $white;
 }
@@ -61,9 +71,27 @@ body {
 }
 
 .contactsection {
-    background-color: $white;
+    background-color: $mdblack;
 }
 
 .thankyou {
     background-color: rgba($black, 0.25);
+}
+
+input,
+textarea {
+    color: $dkgray;
+    background-color: $ltgray;
+    &:focus-visible {
+        outline: 2px solid $accent;
+    }
+    &.is-invalid {
+        &:focus-visible {
+            outline: 2px solid $errorcolor;
+        }
+    }
+}
+
+.invalid-feedback {
+    color: $errorcolor;
 }

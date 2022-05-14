@@ -44,36 +44,38 @@ export default function ContactForm() {
 
     return (
         <section className="contactsection">
-          <div className="sectionheading">
-            <h2>Contact Clif</h2>
-          </div>
           <div className="wrapper">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="formrow">
-                <label>Your Name</label>
-                <input name="your name" type="text" {...register('yourName')} className={`form-control ${errors.yourName ? 'is-invalid' : ''}`} />
-                <div className="invalid-feedback">{errors.yourName?.message}</div>
-              </div>
-              <div className="formrow">
-                <label>Your Email</label>
-                <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
-                <div className="invalid-feedback">{errors.email?.message}</div>
-              </div>
-              <div className="formrow">
-                <label>Your Message</label>
-                <textarea name="your message" {...register('yourMessage')} className={`form-control ${errors.yourMessage ? 'is-invalid' : ''}`}></textarea>
-                <div className="invalid-feedback">{errors.yourMessage?.message}</div>
-              </div>
-              <div className="formrow">
-                  <button type="submit" className="btn submitbtn">Submit</button>
-                  <button type="button" onClick={() => reset()} className="btn resetbtn">Reset</button>
-              </div>
-            </form>
-          </div>
-          <div className="thankyou">
+            <div className="sectionheading">
+              <h2>Contact Clif</h2>
+            </div>
             <div className="wrapper">
-              <div className="headline"><span>Thank You</span></div>
-              <div className="subheadline"><span>I&lsquo;ll get back to ya shortly</span></div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="formrow">
+                  <label>Your Name</label>
+                  <input name="your name" type="text" {...register('yourName')} className={`form-control ${errors.yourName ? 'is-invalid' : ''}`} />
+                  <div className="invalid-feedback">{errors.yourName?.message}</div>
+                </div>
+                <div className="formrow">
+                  <label>Your Email</label>
+                  <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
+                  <div className="invalid-feedback">{errors.email?.message}</div>
+                </div>
+                <div className="formrow">
+                  <label>Your Message</label>
+                  <textarea name="your message" {...register('yourMessage')} className={`form-control ${errors.yourMessage ? 'is-invalid' : ''}`}></textarea>
+                  <div className="invalid-feedback">{errors.yourMessage?.message}</div>
+                </div>
+                <div className="formrow">
+                    <button type="submit" className="btn submitbtn">Submit</button>
+                    <button type="button" onClick={() => reset()} className="btn resetbtn">Reset</button>
+                </div>
+              </form>
+            </div>
+            <div className="thankyou">
+              <div className="wrapper">
+                <div className="headline"><span>Thank You</span></div>
+                <div className="subheadline"><span>I&lsquo;ll get back to ya shortly</span></div>
+              </div>
             </div>
           </div>
         </section>

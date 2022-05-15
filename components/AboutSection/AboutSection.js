@@ -1,4 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
+import LoadingScreen from '../LoadingScreen'
+import { motion } from "framer-motion"
 
 const GetAboutSection = gql`
 query homepagesections {
@@ -14,7 +16,7 @@ query homepagesections {
 
 export default function AboutSection(){
   const { loading, error, data } = useQuery(GetAboutSection);
-  if (loading) return 'Loading...';
+  if (loading) return (<LoadingScreen />);
   if (error) return `Error! ${error.message}`;
 
   const aboutsections = data.homePageSections.nodes;

@@ -1,4 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
+import LoadingScreen from '../LoadingScreen'
+import { motion } from "framer-motion"
 
 const GetPortfolioPageContent = gql`
 query PPS {
@@ -21,12 +23,12 @@ query PPS {
 
 export default function PortfolioPageContent(){
   const { loading, error, data } = useQuery(GetPortfolioPageContent);
-  if (loading) return 'Loading...';
+  if (loading) return (<LoadingScreen />);
   if (error) return `Error! ${error.message}`;
   const portfoliopagesectioncontent = data.portfolioSections.nodes;
 
   return (
-    <section className="portfoliosection fullsection">
+    <section id="portfoliosection" className="portfoliosection fullsection">
       <div className="wrapper">
         <div className="sectionheading">
           <h2>Projects</h2>

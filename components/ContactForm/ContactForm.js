@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { motion } from "framer-motion"
+import { InView  } from "react-intersection-observer"
 
 
   const togglethanks = () => {
@@ -43,12 +45,32 @@ export default function ContactForm() {
     }
 
     return (
-        <section className="contactsection">
+        <section id="contactsection" className="contactsection">
           <div className="wrapper">
+          <InView threshold={0}>
+          {({ ref, inView }) => (
             <div className="sectionheading">
-              <h2>Contact Clif</h2>
+              <motion.h2
+              ref={ref}
+              initial={{ opacity:0, y: 50 }}
+              animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
+              transition={{ duration: 0.5, ease: 'backOut' }}>Contact Clif</motion.h2>
+              <motion.p
+              ref={ref}
+              initial={{ opacity:0, y: 50 }}
+              animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
+              transition={{ duration: 1, delay: 0.15, ease: 'backOut' }}>Send me a message. Lets chat</motion.p>
             </div>
-            <div className="wrapper">
+          )}
+          </InView>
+          <InView threshold={0}>
+          {({ ref, inView }) => (
+            <motion.div className="formwrapper"
+            ref={ref}
+              initial={{ opacity:0, y: 50 }}
+              animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
+              transition={{ duration: 1, delay: 0.15, ease: 'backOut' }}
+            >
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="formrow">
                   <label>Your Name</label>
@@ -70,7 +92,10 @@ export default function ContactForm() {
                     <button type="button" onClick={() => reset()} className="btn resetbtn">Reset</button>
                 </div>
               </form>
-            </div>
+            </motion.div>
+          )}
+          </InView>
+            
             <div className="thankyou">
               <div className="wrapper">
                 <div className="headline"><span>Thank You</span></div>

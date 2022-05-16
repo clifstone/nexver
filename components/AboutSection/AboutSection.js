@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
-import LoadingScreen from '../LoadingScreen'
 import { motion } from "framer-motion"
+import { InView  } from "react-intersection-observer"
+import LoadingScreen from '../LoadingScreen'
 
 const GetAboutSection = gql`
 query homepagesections {
@@ -22,16 +23,37 @@ export default function AboutSection(){
   const aboutsections = data.homePageSections.nodes;
 
   return (
-    <section className="aboutsection fullsection">
+    <section id="aboutsection" className="aboutsection fullsection">
       <div className="wrapper">
-        <div className="sectionheading">
-          <h2>ABOUT CLIF R.</h2>
-          <p>Here, you&rsquo;ll find out more about me, what I do, and my current skills</p>
-        </div>
+        <InView threshold={0}>
+          {({ ref, inView }) => (
+            <div className="sectionheading">
+              <motion.h2
+              ref={ref}
+              initial={{ opacity:0, y: 50 }}
+              animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
+              transition={{ duration: 0.5, ease: 'backOut' }}>ABOUT CLIF R.</motion.h2>
+              <motion.p
+              ref={ref}
+              initial={{ opacity:0, y: 50 }}
+              animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
+              transition={{ duration: 1, delay: 0.15, ease: 'backOut' }}>Here, you&rsquo;ll find out more about me, what I do, and my current skills</motion.p>
+            </div>
+          )}
+        </InView>
         {
           aboutsections.map(thecontent => {
             return(
-              <div className='aboutitem' key={thecontent.homePageSectionId} dangerouslySetInnerHTML={{__html: thecontent.content}}></div>
+              <InView threshold={0} key={thecontent.homePageSectionId}>
+              {({ ref, inView }) => (
+                <motion.div className='aboutitem'  dangerouslySetInnerHTML={{__html: thecontent.content}}
+                ref={ref}
+                initial={{ opacity:0, y: 50 }}
+                animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
+                transition={{ duration: 1, delay: 0.25, ease: 'backOut' }}
+                ></motion.div>
+              )}
+              </InView>
             )
           })
         }

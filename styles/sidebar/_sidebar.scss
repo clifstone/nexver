@@ -1,10 +1,12 @@
+@use '../abstracts/' as *;
+//
 .sidebar {
     transform: scaleY(0);
     transition: transform 0.25s ease-in-out;
     .showmen & {
         transform: scaleY(1);
     }
-    @media (min-width: 768px) {
+    @media #{$des} {
         transform: scaleY(1);
     }
 }
@@ -27,7 +29,7 @@
             }
         }
     }
-    @media (min-width: 768px) {
+    @media #{$des} {
         position: relative;
         ul {
             display: flex;

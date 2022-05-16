@@ -28,7 +28,7 @@ export default function ContactForm() {
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
 
-    function onSubmit(data) {
+    const onSubmit = (data) =>{
         //console.log(JSON.stringify(data, null, 4));
         fetch(
           '/api/contact', {

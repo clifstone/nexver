@@ -24,7 +24,7 @@ export default function Page( data ){
 
 export async function getStaticProps(context) {
 
-    const res = await fetch('https://www.clif.me/mcwp/graphql', {
+    const res = await fetch('https://kip.cat/mcwp/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -61,7 +61,7 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
 
-    const res = await fetch('https://www.clif.me/mcwp/graphql', {
+    const res = await fetch('https://www.kip.cat/mcwp/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

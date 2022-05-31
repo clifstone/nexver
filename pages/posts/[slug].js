@@ -1,28 +1,21 @@
+import { useRouter } from "next/router"
+
 export default function Page( data ){
 
     const post = data.post;
     
-    const closeWindow = () => {
-        window.open(location.href, "_self", "");
-        window.close()
-    }
+    const router = useRouter();
 
     return (
         <div className="posrel">
             <div className='blogpage' dangerouslySetInnerHTML={{__html: post.content}}></div>
-            <div className="clickanywhere">Click anywhere to close</div>
-            <div className="winoverlay" onClick={closeWindow}></div>
-            <style jsx global>{`
-                .siteheader {
-                display:none;
-                }
-            `}</style>
+            <button onClick={() => router.back()}>Back</button>
         </div>
     )
 
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps(ctx) {
 
     const res = await fetch('https://kip.cat/mcwp/graphql', {
         method: 'POST',
@@ -44,7 +37,7 @@ export async function getStaticProps(context) {
               }
             `,
             variables: {
-                id: context.params.slug,
+                id: ctx.params.slug,
                 idType: 'SLUG'
             }
         })

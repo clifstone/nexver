@@ -7,8 +7,8 @@ export default async (req, res) => {
         host: "smtp.office365.com",
         secure: false,
         auth: {
-            user: process.env.local.USER,
-            pass: process.env.local.PASSWORD,
+            user: process.env.USER,
+            pass: process.env.PASSWORD,
         },
         tls: {
             ciphers:'SSLv3'

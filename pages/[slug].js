@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
-import { StandaloneClient } from '../../data/StandaloneClient'
-import { ALLPOSTS_SLUGS, POST_CONTENT } from '../../data/queries'
+import { StandaloneClient } from '../data/StandaloneClient'
+import { ALLPAGES_SLUGS, PAGES_CONTENT } from '../data/queries'
 
 const client = StandaloneClient;
-const getPaths = ALLPOSTS_SLUGS;
-const getContent = POST_CONTENT;
+const getPaths = ALLPAGES_SLUGS;
+const getPage = PAGES_CONTENT;
 
 export default function Page( data ){
     const post = data.post;
@@ -19,20 +19,20 @@ export default function Page( data ){
 }
 
 export const getStaticProps = async (ctx) => {
-    const { data } = await client.query({query: getContent,  variables: { id: ctx.params.slug, idType: 'SLUG' }  });
+    const { data } = await client.query({query: getPage,  variables: { id: ctx.params.slug, idType: 'SLUG' }  });
 
     return {
         props: {
-            post: data.post,
+            post: data.page,
         },
     }
 };
 
 export const getStaticPaths = async () => {
     const { data } = await client.query({query: getPaths});
-    const posts = data.posts.nodes;
-    const paths = posts.map((post) => ({
-        params: { slug: post.slug },
+    const pages = data.pages.nodes;
+    const paths = pages.map((page) => ({
+        params: { slug: page.slug },
     }))
 
     return { paths, fallback: false }

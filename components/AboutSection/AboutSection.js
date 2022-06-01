@@ -1,22 +1,13 @@
-import { gql, useQuery } from '@apollo/client'
-import { motion } from "framer-motion"
-import { InView  } from "react-intersection-observer"
+import { useQuery } from '@apollo/client'
+import { motion } from 'framer-motion'
+import { InView  } from 'react-intersection-observer'
 import LoadingScreen from '../LoadingScreen'
+import { GetAboutSection } from '../../data/queries'
 
-const GetAboutSection = gql`
-query homepagesections {
-  homePageSections {
-    nodes {
-      content
-      id
-      homePageSectionId
-    }
-  }
-}
-`;
+const getQuery = GetAboutSection;
 
 export default function AboutSection(){
-  const { loading, error, data } = useQuery(GetAboutSection);
+  const { loading, error, data } = useQuery(getQuery);
   if (loading) return (<LoadingScreen />);
   if (error) return `Error! ${error.message}`;
 
@@ -25,7 +16,7 @@ export default function AboutSection(){
   return (
     <section id="aboutsection" className="aboutsection fullsection">
       <div className="wrapper">
-        <InView threshold={0}>
+        <InView threshold={0} triggerOnce='true'>
           {({ ref, inView }) => (
             <div className="sectionheading">
               <motion.h2
@@ -37,7 +28,8 @@ export default function AboutSection(){
               ref={ref}
               initial={{ opacity:0, y: 50 }}
               animate={ inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 } }
-              transition={{ duration: 1, delay: 0.15, ease: 'backOut' }}>Here, you&rsquo;ll find out more about me, what I do, and my current skills</motion.p>
+              transition={{ duration: 1, delay: 0.15, ease: 'backOut' }}
+              >Here, you&rsquo;ll find out more about me, what I do, and my current skills</motion.p>
             </div>
           )}
         </InView>

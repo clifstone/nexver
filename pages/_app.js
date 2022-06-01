@@ -1,8 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
 import Head from 'next/head';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 
 
 import '../styles/style.scss'
@@ -15,9 +14,11 @@ function MyApp({ Component, pageProps }) {
         <title>Clif R.</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      
     </ApolloProvider>
   );
 }

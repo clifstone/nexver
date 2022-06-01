@@ -1,17 +1,1 @@
-.aboutsection {
-    .wp-block-columns {
-        display: grid;
-        grid-gap: 3rem;
-    }
-    @media (min-width:768px) {
-        .wp-block-columns {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    @media (min-width:1366px) {
-        .wp-block-columns {
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 5rem;
-        }
-    }
-}
+.aboutsection {}

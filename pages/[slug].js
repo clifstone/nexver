@@ -29,7 +29,13 @@ export const getStaticProps = async (ctx) => {
 };
 
 export const getStaticPaths = async () => {
-    const { data } = await client.query({query: getPaths});
+    const { data } = await client.query({query: getPaths}).then((res) => {
+        console.log(res)
+        return res
+    }).catch((err) => {
+        console.log(err, "error on your side")
+        return err
+    });
     const pages = data.pages.nodes;
     const paths = pages.map((page) => ({
         params: { slug: page.slug },

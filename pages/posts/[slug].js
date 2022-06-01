@@ -6,7 +6,7 @@ const client = StandaloneClient;
 const getPaths = ALLPOSTS_SLUGS;
 const getContent = POST_CONTENT;
 
-export default function Post( data ){
+export default function Post( {data} ){
     const post = data.post;
     const router = useRouter();
 
@@ -36,15 +36,10 @@ export const getStaticPaths = async () => {
         console.log(err, "error on your side")
         return err
     });
-    try{
-        const posts = data?.posts.nodes;
-        const paths = posts.map((post) => ({
-            params: { slug: post.slug },
-        }))
-        return { paths, fallback: false }
-    }catch(error){
-        return { error }
-    }
+    const posts = data?.posts.nodes;
+    const paths = posts.map((post) => ({
+        params: { slug: post.slug },
+    }))
 
-    
+    return { paths, fallback: false }
 };

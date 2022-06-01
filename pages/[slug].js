@@ -41,5 +41,5 @@ export const getStaticPaths = async () => {
         params: { slug: page.slug },
     }))
 
-    return { paths, fallback: false }
+    return { paths, fallback: true }
 };

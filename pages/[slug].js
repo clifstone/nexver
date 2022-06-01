@@ -36,10 +36,10 @@ export const getStaticPaths = async () => {
         console.log(err, "error on your side")
         return err
     });
-    const pages = data.pages.nodes;
+    const pages = data?.pages.nodes;
     const paths = pages.map((page) => ({
         params: { slug: page.slug },
     }))
 
-    return { paths, fallback: true }
+    return { paths, fallback: false }
 };

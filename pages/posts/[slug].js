@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
         console.log(err, "error on your side")
         return err
     });
-    const posts = data.posts.nodes;
+    const posts = data?.posts.nodes;
     const paths = posts.map((post) => ({
         params: { slug: post.slug },
     }))

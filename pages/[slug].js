@@ -4,7 +4,7 @@ import { ALLPAGES_SLUGS, PAGES_CONTENT } from '../data/queries'
 
 const client = StandaloneClient;
 const getPaths = ALLPAGES_SLUGS;
-const getPage = PAGES_CONTENT;
+const getContent = PAGES_CONTENT;
 
 export default function Page( data ){
     const post = data.post;
@@ -19,7 +19,7 @@ export default function Page( data ){
 }
 
 export const getStaticProps = async (ctx) => {
-    const { data } = await client.query({query: getPage,  variables: { id: ctx.params.slug, idType: 'SLUG' }  });
+    const { data } = await client.query({query: getContent,  variables: { id: ctx.params.slug, idType: 'SLUG' }  });
 
     return {
         props: {

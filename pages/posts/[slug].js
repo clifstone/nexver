@@ -6,7 +6,7 @@ const client = StandaloneClient;
 const getPaths = ALLPOSTS_SLUGS;
 const getContent = POST_CONTENT;
 
-export default function Page( data ){
+export default function Post( data ){
     const post = data.post;
     const router = useRouter();
 

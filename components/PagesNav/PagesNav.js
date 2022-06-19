@@ -1,28 +1,13 @@
-import { gql, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { motion } from "framer-motion"
-import Link from 'next/link'
+import { GET_PAGES_MENU } from '../../data/queries'
+import RippleButton from '../RippleButton'
 
-const GetPageLinks = gql`
-  query GetPageLinks {
-    menu(id: "Pages", idType: NAME) {
-      id
-      menuItems {
-        edges {
-          node {
-            id
-            label
-            path
-            url
-          }
-        }
-      }
-    }
-  }
-`;
+const getPagesMenu = GET_PAGES_MENU;
 
 export default function PagesNav(){
 
-  const { loading, error, data } = useQuery(GetPageLinks);
+  const { loading, error, data } = useQuery(getPagesMenu);
 
   if (loading) return null;
   if (error) return `Error! ${error.message}`;
@@ -45,16 +30,16 @@ export default function PagesNav(){
     show: { y: 0 },
     transition: { duration: 1 }
   }
-  
+
   return (
     <nav className="pagesmenu">
-      <motion.ul variants={container} initial="hidden" animate="show">
+      <motion.ul className="pagesmenu__list" variants={container} initial="hidden" animate="show">
         {
           data.menu.menuItems.edges.map(page => {
             return(
-              <motion.li key={page.node.id} onClick={closemen} variants={item}>
-                <Link href={`${page.node.path}`} >{page.node.label}</Link>
-              </motion.li>
+              <motion.li className="pagesmenu__list-item ripplebtn" key={page.node.id} onClick={closemen} variants={item}>
+                <RippleButton url={`${page.node.path}`} label={`${page.node.label}`} />
+              </motion.li> 
             )
           })
         }

@@ -1,6 +1,6 @@
 export default function MenBtn(){
 
-  function togglemen(){
+  const togglemen = () => {
     window.document.body.classList.contains('showmen') ? window.document.body.classList.remove('showmen') : window.document.body.classList.add('showmen');
   }
 

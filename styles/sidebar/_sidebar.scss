@@ -6,37 +6,50 @@
     .showmen & {
         transform: scaleY(1);
     }
-    @media #{$des} {
-        transform: scaleY(1);
-    }
 }
 
 .pagesmenu {
     position: absolute;
     width: 100%;
-    ul {
-        font-size: 0.8rem;
-        font-family: 'fontbold';
-        text-transform: uppercase;
-        letter-spacing: 0.125rem;
-        text-align: right;
-        li {
-            border-top: 1px solid;
-            a {
-                width: 100%;
-                display: block;
-                padding: 0.8rem;
-            }
-        }
+}
+
+.pagesmenu__list {
+    font-size: 0.8rem;
+    font-family: 'fontbold';
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    text-align: right;
+}
+
+.pagesmenu__list-item {
+    border-top: 1px solid;
+}
+
+.pagesmenu__anchor {
+    width: 100%;
+    display: block;
+    padding: 0.8rem;
+}
+
+@media #{$des} {
+    .sidebar {
+        transform: scaleY(1);
     }
-    @media #{$des} {
+    .pagesmenu {
         position: relative;
-        ul {
-            display: flex;
-            gap: 1rem;
-            li {
-                border: 0 none;
-            }
-        }
+    }
+    .pagesmenu__list {
+        display: flex;
+        gap: 1rem;
+    }
+    .pagesmenu__list-item {
+        border: 0 none;
+        position: relative;
+        overflow: hidden;
+    }
+    .pagesmenu__anchor {
+        width: 100%;
+        display: block;
+        padding: 0.8rem;
     }
 }

@@ -1,5 +1,4 @@
 import PagesNav from '../PagesNav'
-import SiteLogo from '../SiteLogo'
 
 export default function Sidebar(){
 

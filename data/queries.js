@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const GetAboutSection = gql`
+export const GetAboutSection = gql `
     query homepagesections {
     homePageSections {
         nodes {
@@ -70,4 +70,22 @@ query PostQuery($id: ID!) {
     }
   }
 
+`;
+
+export const GET_PAGES_MENU = gql `
+  query GetPageLinks {
+    menu(id: "Pages", idType: NAME) {
+      id
+      menuItems {
+        edges {
+          node {
+            id
+            label
+            path
+            url
+          }
+        }
+      }
+    }
+  }
 `;

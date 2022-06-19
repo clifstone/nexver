@@ -9,7 +9,7 @@ const getContent = PAGES_CONTENT;
 export default function Page( data ){
     const post = data.post;
     const router = useRouter();
-
+    //console.log(referrer);
     return (
         <div className="posrel">
             <div className='blogpage' dangerouslySetInnerHTML={{__html: post.content}}></div>
